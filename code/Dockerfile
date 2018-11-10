@@ -37,12 +37,11 @@ RUN docker-php-ext-install soap \
 	bcmath \
 	sockets
 
+# Download the latest version of modman
 RUN curl -SL https://raw.githubusercontent.com/colinmollenhour/modman/master/modman -o modman \
     && chmod +x ./modman \
     && mv ./modman /usr/local/bin/
 
-# Install Magento
-#RUN install-magento && php shell/indexer.php --reindexall
 #COPY redis.conf /var/www/htdocs/app/etc/
 
 #Expose port
