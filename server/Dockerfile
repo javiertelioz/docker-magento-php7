@@ -1,8 +1,6 @@
 FROM nginx:alpine
 
-LABEL maintainer="Javier Telio Zapot <jtelio118@gmail.com>" \
-	version.image="v1.0" \
-	description="A Magento NGINX Docker"
+MAINTAINER Javier Telio Zapot <jtelio118@gmail.com>
 
 WORKDIR /var/www/html
 

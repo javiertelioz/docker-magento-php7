@@ -10,6 +10,7 @@ services:
       - ./:/var/www/html
     links:
       - db
+
   web:
     build: ./server/
     env_file:
@@ -21,6 +22,7 @@ services:
       - 443:443
     links:
       - db
+  
   db:
     image: wangxian/alpine-mysql
     environment:

@@ -1,0 +1,11 @@
+code/media/barcode/
+code/media/catalog/product/*
+code/media/catalog/product/cache
+code/media/wysiwyg/*.thumbs
+code/downloader/.cache
+code/downloader/cache.cfg
+code/downloader/connect.cfg
+code/var/*
+robots.txt
+sitemap.xml
+google*.html

@@ -1,0 +1,4 @@
+#!/bin/sh
+#chmod -R 0777 /var/www/code/var
+exec php-fpm
+#$ exec $@
