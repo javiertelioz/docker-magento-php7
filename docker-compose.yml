@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+
+  app:
+    build: ./code/
+    env_file:
+      - .env
+    volumes:
+      - ./:/var/www/html
+    links:
+      - db
+  # web:
+  #   build: ./frontend/
+  #   working_dir: /var/www/html
+  #   env_file:
+  #     - .env
+  #   volumes_from:
+  #     - app
+  #   ports:
+  #     - 8080:80
+  #     - 443:443
+  #   links:
+  #     - db
+  db:
+    image: wangxian/alpine-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: myrootpassword
+      MYSQL_PASSWORD: myrootpassword
+      MYSQL_DATABASE: magento
+      MYSQL_USER: magento
+    volumes:
+      - mysql:/var/lib/mysql
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: db
+      PMA_USER: magento
+      PMA_PASSWORD: myrootpassword
+    restart: always
+    ports:
+      - 8083:80
+    links:
+      - db
+volumes:
+  mysql:
