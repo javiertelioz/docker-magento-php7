@@ -9,3 +9,4 @@ code/var/*
 robots.txt
 sitemap.xml
 google*.html
+code/app/etc/local.xml
