@@ -32,7 +32,6 @@ RUN curl -SL https://raw.githubusercontent.com/colinmollenhour/modman/master/mod
     && chmod +x ./modman \
     && mv ./modman /usr/local/bin/
 
-# Change Own
-#RUN chown -R www-data:www-data /var/www/html
-
+# Install Magento
+#RUN install-magento && php shell/indexer.php --reindexall
 #COPY redis.conf /var/www/htdocs/app/etc/

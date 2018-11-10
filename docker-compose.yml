@@ -10,18 +10,17 @@ services:
       - ./:/var/www/html
     links:
       - db
-  # web:
-  #   build: ./frontend/
-  #   working_dir: /var/www/html
-  #   env_file:
-  #     - .env
-  #   volumes_from:
-  #     - app
-  #   ports:
-  #     - 8080:80
-  #     - 443:443
-  #   links:
-  #     - db
+  web:
+    build: ./server/
+    env_file:
+      - .env
+    volumes_from:
+      - app
+    ports:
+      - 8080:80
+      - 443:443
+    links:
+      - db
   db:
     image: wangxian/alpine-mysql
     environment:
