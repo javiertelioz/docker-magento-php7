@@ -29,15 +29,24 @@ MAGENTO_ADMIN_EMAIL       | Magento admin email | admin@example.com
 MAGENTO_ADMIN_USERNAME    | Magento admin username | admin
 MAGENTO_ADMIN_PASSWORD    | Magento admin password | admin1234
 
+Update these values in the .env file in the root directory of this repo.
+
 [*More Info*](https://magento2.atlassian.net/wiki/spaces/m1wiki/pages/14024845/Magento+1.x+Command+Line+Installation+Wizard)
 
-After Docker container started, use `docker ps` to find container id, then use `docker exec` to call `install-magento` script.
+After Docker container started, use `docker ps` to find container id or name of the then app container use `docker exec` to call `install-magento` script.
 
 ```bash
 docker exec -it <container id> install-magento
 ```
+ex:
+```bash
+docker exec -it docker-magento-php7_app_1 install-magento
+```
 
 After calling `install-magento`, Magento is installed and ready to use. Use provided admin username and password to log into Magento backend.
+
+The store is available from http://localhost:8080/
+
 
 ## Modman
 Modman is a [Magento module manager](https://github.com/colinmollenhour/modman) that allows you to leave your work siloed from the actual Magento codebase via symlinks. With modman, you can sync plugin or theme work without keeping a persistent volume (or using a hidden volume).
