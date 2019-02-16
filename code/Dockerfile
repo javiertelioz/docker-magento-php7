@@ -19,23 +19,35 @@ RUN chmod +x /usr/local/bin/init
 
 # Install Libs
 RUN apk add --no-cache --virtual .build-deps \
+	$PHPIZE_DEPS \
 	libxml2-dev \
 	libpng \
 	libpng-dev \
 	libmcrypt-dev \
 	jpeg-dev \
+	libjpeg-turbo-dev \
 	freetype-dev \
-	mysql-client
+	mysql-client \
+	imagemagick-dev
+
+# Install GD
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 
 # Install PHP Ext
 RUN docker-php-ext-install soap \
 	pdo_mysql \
 	mbstring \
 	gd \
+	iconv \
 	pcntl \
 	posix \
 	bcmath \
+	zip \
 	sockets
+
+
+RUN pecl install imagick && \
+	docker-php-ext-enable imagick
 
 # Download the latest version of modman
 RUN curl -SL https://raw.githubusercontent.com/colinmollenhour/modman/master/modman -o modman \
